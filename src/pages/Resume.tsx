@@ -171,7 +171,7 @@ const Resume = () => {
               <a href="./Samadhan_Tikone_Resume.pdf">
                   <Button
                   size="lg"
-                  className="bg-portfolio-teal hover:bg-portfolio-teal/90 text-white group animate-pulse hover:animate-none"
+                  className="bg-portfolio-teal hover:bg-portfolio-teal/90 text-[15px] text-white group animate-pulse hover:animate-none"
                 >
                   <Eye className="w-5 h-5 mr-2 group-hover:animate-bounce-gentle" />
                   View Resume
@@ -186,7 +186,7 @@ const Resume = () => {
               <a href="./Samadhan_Tikone_Resume.pdf"  download={true}>
                   <Button
                   size="lg"
-                  className="bg-portfolio-teal hover:bg-portfolio-teal/90 text-white group animate-pulse hover:animate-none"
+                  className="bg-portfolio-teal hover:bg-portfolio-teal/90 text-white group animate-pulse text-[15px] hover:animate-none"
                 >
                   <Download className="w-5 h-5 mr-2 group-hover:animate-bounce" />
                   Download My Resume (PDF)
