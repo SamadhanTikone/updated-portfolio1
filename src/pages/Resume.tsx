@@ -112,11 +112,11 @@ const Resume = () => {
     },
     {
       category: "Frameworks",
-      skills: ["Spring Boot", "React.js", "Hibernate"],
+      skills: ["Spring Boot", "React.js", "Hibernate","Maven","Spring"],
     },
     {
       category: "Tools",
-      skills: ["Postman", "GitHub", "VS Code", "Eclipse"],
+      skills: ["Postman", "GitHub", "VS Code", "Eclipse","Docker","JUnit"],
     },
     {
       category: "Databases",
@@ -125,6 +125,10 @@ const Resume = () => {
     {
       category: "Web Technologies",
       skills: ["HTML", "CSS", "Bootstrap", "Tailwind", "RESTful APIs"],
+    },
+     {
+      category: "Cloud Technologies",
+      skills: ["AWS"],
     },
   ];
 

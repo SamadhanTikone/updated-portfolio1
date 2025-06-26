@@ -9,9 +9,9 @@ const Hero = () => {
   const techKeywords = ["Java", "Spring Boot", "React", "MongoDB", "REST APIs"];
 
   return (
-    <section className="min-h-screen flex items-center justify-center bg-background">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+    <section className="min-h-screen flex mt-4 items-center justify-center bg-background ">
+      <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 w-full ">
+        <div className="grid lg:grid-cols-2 gap-12 items-center ">
           {/* Left Side - Coding Video/Animation */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}

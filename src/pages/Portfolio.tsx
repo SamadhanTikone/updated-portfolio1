@@ -26,7 +26,7 @@ const Portfolio = () => {
       name: "Online Learning Platform",
       description:
         "E-learning platform with comprehensive course management, video streaming, and progress tracking for students and instructors.",
-      techStack: ["Spring Boot", "Hibernate", "JWT", "MySQL"],
+      techStack: ["Spring Boot", "Hibernate", "JWT", "MySQL","Maven"],
       features: [
         "Course Creation & Management",
         "Video Streaming & Upload",
@@ -70,8 +70,24 @@ const Portfolio = () => {
       ],
       image:
         "https://images.pexels.com/photos/5077049/pexels-photo-5077049.jpeg",
-      demoUrl: "#",
-      githubUrl: "#",
+      demoUrl: "https://hotel-kings.vercel.app/",
+      githubUrl: "https://github.com/SamadhanTikone/HotelWebPage",
+    },
+    {
+      name: "Company Website",
+      description:
+        "A demo website highlighting completed projects, showcasing client feedback, and demonstrating a professional approach to delivering quality results.",
+      techStack: ["React","Tailwind","MUI"],
+      features: [
+        "Completed projects",
+        "Client testimonials",
+        "Quality work",
+        "Professional design & Responsive design"
+      ],
+      image:
+        "./emacron.png",
+      demoUrl: "https://emacron-solutions.vercel.app/",
+      githubUrl: "https://github.com/SamadhanTikone/Emacron",
     },
   ];
 
