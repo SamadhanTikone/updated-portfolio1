@@ -48,10 +48,8 @@ const Contact = () => {
     message: "",
   });
 
-  // Email validation regex
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-  // Validate individual field
   const validateField = (name: keyof FormData, value: string): string => {
     switch (name) {
       case "name":
@@ -79,7 +77,6 @@ const Contact = () => {
     }
   };
 
-  // Validate entire form
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {};
     let isValid = true;
@@ -97,20 +94,17 @@ const Contact = () => {
     return isValid;
   };
 
-  // Handle input change
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const { name, value } = e.target;
     const field = name as keyof FormData;
 
-    // Update form data with functional update
     setFormData((prevData) => ({
       ...prevData,
       [field]: value,
     }));
 
-    // Clear error for this field if user is typing
     if (errors[field]) {
       setErrors((prevErrors) => ({
         ...prevErrors,
@@ -118,55 +112,51 @@ const Contact = () => {
       }));
     }
 
-    // Clear submission message when user starts typing again
     if (submission.status !== "idle") {
       setSubmission({ status: "idle", message: "" });
     }
   };
 
-  // Handle form submission
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Validate form
     if (!validateForm()) {
       return;
     }
 
-    // Set loading state
     setSubmission({ status: "loading", message: "" });
 
     try {
-      // For demo purposes, simulate success since endpoint doesn't exist
-      console.log("Simulating successful submission:", formData);
-
-      // Simulate API delay
-      await new Promise((resolve) => setTimeout(resolve, 1500));
-
-      setSubmission({
-        status: "success",
-        message:
-          "Thank you! Your message has been sent successfully. I'll get back to you soon.",
+      const response = await fetch("https://formsubmit.co/ajax/tikonesamadhan03@gmail.com", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(formData),
       });
 
-      // Clear form
-      setFormData({
-        name: "",
-        email: "",
-        subject: "",
-        message: "",
-      });
-      setErrors({});
+      const result = await response.json();
 
-      // Auto-hide success message after 5 seconds
-      setTimeout(() => {
-        setSubmission({ status: "idle", message: "" });
-      }, 5000);
-    } catch (error) {
+      if (response.ok) {
+        setSubmission({
+          status: "success",
+          message: result.message || "Message sent successfully!",
+        });
+        setFormData({ name: "", email: "", subject: "", message: "" });
+        setErrors({});
+        setTimeout(() => {
+          setSubmission({ status: "idle", message: "" });
+        }, 5000);
+      } else {
+        throw new Error(result.message || "Submission failed");
+      }
+    } catch (error: any) {
       setSubmission({
         status: "error",
         message:
-          "Failed to send message. Please try again later or contact me directly via email.",
+          error.message ||
+          "Failed to send message. Please try again later.",
       });
     }
   };
@@ -192,7 +182,6 @@ const Contact = () => {
             </motion.div>
 
             <div className="grid lg:grid-cols-2 gap-12">
-              {/* Contact Form */}
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -203,7 +192,6 @@ const Contact = () => {
                   Send Message
                 </h2>
 
-                {/* Submission Status Messages */}
                 <AnimatePresence>
                   {submission.status === "success" && (
                     <motion.div
@@ -239,7 +227,6 @@ const Contact = () => {
                 </AnimatePresence>
 
                 <form onSubmit={handleSubmit} className="space-y-6" noValidate>
-                  {/* Name Field */}
                   <div className="space-y-2">
                     <label className="block text-sm font-medium text-foreground">
                       Name <span className="text-red-500">*</span>
@@ -272,7 +259,6 @@ const Contact = () => {
                     </AnimatePresence>
                   </div>
 
-                  {/* Email Field */}
                   <div className="space-y-2">
                     <label className="block text-sm font-medium text-foreground">
                       Email <span className="text-red-500">*</span>
@@ -305,7 +291,6 @@ const Contact = () => {
                     </AnimatePresence>
                   </div>
 
-                  {/* Subject Field */}
                   <div className="space-y-2">
                     <label className="block text-sm font-medium text-foreground">
                       Subject <span className="text-red-500">*</span>
@@ -338,7 +323,6 @@ const Contact = () => {
                     </AnimatePresence>
                   </div>
 
-                  {/* Message Field */}
                   <div className="space-y-2">
                     <label className="block text-sm font-medium text-foreground">
                       Message <span className="text-red-500">*</span>
@@ -391,7 +375,6 @@ const Contact = () => {
                 </form>
               </motion.div>
 
-              {/* Contact Info */}
               <motion.div
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -438,7 +421,6 @@ const Contact = () => {
                   <SocialLinks showLabels />
                 </div>
 
-                {/* Response Time Notice */}
                 <div className="bg-portfolio-teal/10 border border-portfolio-teal/20 rounded-lg p-6">
                   <h4 className="font-semibold text-portfolio-teal mb-2">
                     Quick Response
